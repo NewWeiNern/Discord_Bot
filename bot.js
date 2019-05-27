@@ -6,6 +6,7 @@ client.on('ready', () => {
     console.log('I am ready!');
     setInterval(()=>{
         date+=1;
+        console.log(date);
     }, 10000);
 });
 

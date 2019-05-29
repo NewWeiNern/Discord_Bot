@@ -1,14 +1,17 @@
 const Discord = require('discord.js'),
-      request = require("request");
+      XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const client = new Discord.Client();
 let current_id;
 client.on('ready', () => {
-    console.log("Bot is ready for deploy!");
-    request("https://cors-anywhere.herokuapp.com/"+"https://www.rockstargames.com/newswire/tags.json?tags=702&page=1", function(error, response, body){
-    console.log(error);
-          console.log(response);
-          console.log(body);
-    });
+      console.log("Bot is ready for deploy!");
+      var xml = new XMLHttpRequest();
+      xml.open("GET", "https://cors-anywhere.herokuapp.com/" + "https://www.rockstargames.com/newswire/tags.json?tags=702&page=1";
+      xml.send();
+      xml.onreadystatechange = function(e){
+            if(this.status == 200 && this.readyState == 4){
+                  console.log(e);
+            }
+      }
     });
 
 client.on('message', message => {

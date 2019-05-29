@@ -8,6 +8,7 @@ client.on('ready', () => {
       xml.open("GET", "https://cors-anywhere.herokuapp.com/" + "https://www.rockstargames.com/newswire/tags.json?tags=702&page=1");
       xml.send();
       xml.onreadystatechange = function(e){
+            console.log(e);
             if(this.status == 200 && this.readyState == 4){
                   console.log(e);
             }

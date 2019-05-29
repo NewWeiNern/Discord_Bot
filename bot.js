@@ -5,7 +5,7 @@ let current_id;
 client.on('ready', () => {
       console.log("Bot is ready for deploy!");
       var xml = new XMLHttpRequest();
-      xml.open("GET", "https://cors-anywhere.herokuapp.com/" + "https://www.rockstargames.com/newswire/tags.json?tags=702&page=1");
+      xml.open("GET","https://www.rockstargames.com/newswire/tags.json?tags=702&page=1");
       xml.send();
       xml.onreadystatechange = function(e){
             console.log(e);

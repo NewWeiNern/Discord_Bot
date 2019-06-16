@@ -25,7 +25,7 @@ client.on('message', message => {
             doCORSRequest({method:"GET", url:"https://www.rockstargames.com/newswire/get-article/" + id + ".json?autoplay=false"}, e=>{
                 message.channel.send(JSON.parse(e).article.content.replace(regex, ""));
                 news_run = true;
-                setTimeout(3600000, ()=>{news_run = false})
+                setTimeout(function(){news_run = false}, 3600000);
             });
             
         });

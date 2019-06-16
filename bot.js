@@ -2,7 +2,6 @@ const Discord = require('discord.js'),
       XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const client = new Discord.Client();
 const affect_channel = "gta-news";
-var news_run = false;
 function doCORSRequest(options, result){
     let cors = "https://cors-anywhere.herokuapp.com/";
     var xml = new XMLHttpRequest();
@@ -19,19 +18,14 @@ function doCORSRequest(options, result){
 client.on('message', message => {
     const regex = /<p.+><img.+|<div.+|<\/?.+?>/gm;
 
-    if(message.content == "news" && affect_channel == message.channel.name && !news_run){
+    if(message.content == "news" && affect_channel == message.channel.name){
         doCORSRequest({method:"GET", url:"https://www.rockstargames.com/newswire/tags.json?tags=702&page=1"}, e=>{
             var id = JSON.parse(e).posts[0].id;
             doCORSRequest({method:"GET", url:"https://www.rockstargames.com/newswire/get-article/" + id + ".json?autoplay=false"}, e=>{
                 message.channel.send(JSON.parse(e).article.content.replace(regex, ""));
-                news_run = true;
-                setTimeout(function(){news_run = false}, 3600000);
             });
             
         });
-    }
-    else{
-         message.channel.send("News already posted!");
     }
 
 });

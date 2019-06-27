@@ -39,7 +39,7 @@ var Bothandler = {
                         setTimeout(()=>{this.data_sent = false}, 1800000);
                         this.time_until = Date.now() + 1800000;
                         message.channel.send(get_content(e).slice(0,2000));
-                        message.channel.send(get_content(e).slice(2000, get_content(e).length);
+                        message.channel.send(get_content(e).slice(2000, get_content(e).length));
                     });
                 }
                 else{
